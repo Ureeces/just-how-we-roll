@@ -278,6 +278,7 @@ const getMode = function(arr) {
   for(const num in numCounts) {
     if(numCounts[num] > modeValue) {
       modeKey = num;
+      modeValue = numCounts[num];
     }
   }
 
