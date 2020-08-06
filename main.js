@@ -69,6 +69,10 @@ d20.src = './images/start/d20.jpg';
 // Reset Button
 const resetButton = document.querySelector('reset-button');
 
+
+/*******************
+ * EVENT LISTENERS *
+ *******************/
 /*******************
  * DICE ROLLERS *
  *******************/
@@ -77,18 +81,34 @@ const resetButton = document.querySelector('reset-button');
 // 2. Change the image of the dice roll 
 // 3. Add the result of the dice roll into its respective array
 
-// Universal function for die rolls, might not be used
-const roll = function(max, sides, amount) {
-  // 1. Check the amount of sides. The result decides the image directory
-  // 2a. If equal to six, we're working in the d6 image directory
-  // 2b. Otherwise, we're working in the numbers directory
-  // 3. 
+const rolld6 = function() {
+  const result = getRandomNumber(6);
+  
 
+  return result;
 }
 
-/*******************
- * EVENT LISTENERS *
- *******************/
+const roll2d6 = function() {
+  const result1 = getRandomNumber(6);
+  const result2 = getRandomNumber(6);
+  const result = result1 + result2;
+
+  return result;
+}
+
+const rolld12 = function() {
+  const result = getRandomNumber(12);
+
+
+  return result;
+}
+
+const rolld20 = function() {
+  const result = getRandomNumber(20);
+
+
+  return result;
+}
 
 /******************
  * RESET FUNCTION *
