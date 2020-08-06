@@ -66,6 +66,9 @@ d6_2.src = './images/start/d6.png';
 d12.src = './images/start/d12.jpeg';
 d20.src = './images/start/d20.jpg';
 
+// Reset Button
+const resetButton = document.querySelector('reset-button');
+
 /*******************
  * DICE ROLLERS *
  *******************/
@@ -109,8 +112,23 @@ const reset = function() {
   d20.src = './images/start/d20.jpg';
 
   // Changes mean, median, mode to nothing
+  // d6
+  d6Mean.innerText = '&nbsp';
+  d6Median.innerText = '&nbsp';
+  d6Mode.innerText = '&nbsp';
+  // 2d6
+  dd6Mean.innerText = '&nbsp';
+  dd6Median.innerText = '&nbsp';
+  dd6Mode.innerText = '&nbsp';
+  // d12
+  d12Mean.innerText = '&nbsp';
+  d12Median.innerText = '&nbsp';
+  d12Mode.innerText = '&nbsp';
+  // d20
+  d20Mean.innerText = '&nbsp';
+  d20Median.innerText = '&nbsp';
+  d20Mode.innerText = '&nbsp';
 }
-
 
 /****************
  * MATH SECTION *
