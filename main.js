@@ -82,33 +82,57 @@ const resetButton = document.querySelector('reset-button');
 // 3. Add the result of the dice roll into its respective array
 
 const rolld6 = function() {
+  // Roll the result
   const result = getRandomNumber(6);
   
+  // Change the image
+  d6.src = `./images/d6/${result}.png`;
 
   return result;
 }
 
 const roll2d6 = function() {
+  // Roll the result
   const result1 = getRandomNumber(6);
   const result2 = getRandomNumber(6);
   const result = result1 + result2;
+
+  // Change the images
+  d6_1.src = `./images/d6/${result1}.png`;
+  d6_2.src = `./images/d6/${result2}.png`;
+
 
   return result;
 }
 
 const rolld12 = function() {
+  // Roll the result
   const result = getRandomNumber(12);
 
+  // Change the image
+  d12.src = `./images/numbers/${result}.png`;
 
   return result;
 }
 
 const rolld20 = function() {
+  // Roll the result
   const result = getRandomNumber(20);
 
+  // Change the image
+  d20.src = `./images/numbers/${result}.png`
 
   return result;
 }
+
+d6.addEventListener('click', rolld6);
+
+d6_1.addEventListener('click', roll2d6);
+d6_2.addEventListener('click', roll2d6);
+
+d12.addEventListener('click', rolld12);
+
+d20.addEventListener('click', rolld20);
 
 /******************
  * RESET FUNCTION *
