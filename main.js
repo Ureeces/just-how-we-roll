@@ -2,7 +2,7 @@
  * DATA *
  **********/
 
-const sixes = [1];
+const sixes = [];
 const doubleSixes = [];
 const twelves = [];
 const twenties = [];
@@ -67,8 +67,7 @@ d12.src = './images/start/d12.jpeg';
 d20.src = './images/start/d20.jpg';
 
 // Reset Button
-const resetButton = document.querySelector('reset-button');
-
+const resetButton = document.querySelector('#reset-button');
 
 /*******************
  * EVENT LISTENERS *
@@ -88,6 +87,18 @@ const rolld6 = function() {
   // Change the image
   d6.src = `./images/d6/${result}.png`;
 
+  // Add the result to its array
+  sixes.push(result);
+
+  // Get the Mean, Median, and Mode, then set the HTML
+  const mean = getMean(sixes);
+  d6Mean.innerText = mean;
+
+  const median = getMedian(sixes);
+  d6Median.innerText = median;
+
+  const mode = getMode(sixes);
+
   return result;
 }
 
@@ -101,6 +112,17 @@ const roll2d6 = function() {
   d6_1.src = `./images/d6/${result1}.png`;
   d6_2.src = `./images/d6/${result2}.png`;
 
+  // Add the result to its array
+  doubleSixes.push(result);
+
+  // Get the Mean, Median, and Mode, then set the HTML
+  const mean = getMean(doubleSixes);
+  dd6Mean.innerText = mean;
+
+  const median = getMedian(doubleSixes);
+  dd6Median.innerText = median;
+
+  const mode = getMode(doubleSixes);
 
   return result;
 }
@@ -112,6 +134,18 @@ const rolld12 = function() {
   // Change the image
   d12.src = `./images/numbers/${result}.png`;
 
+  // Add the result to its array
+  twelves.push(result);
+
+  // Get the Mean, Median, and Mode, then set the HTML
+  const mean = getMean(twelves);
+  d12Mean.innerText = mean;
+
+  const median = getMedian(twelves);
+  d12Median.innerText = median;
+
+  const mode = getMode(twelves);
+
   return result;
 }
 
@@ -120,7 +154,19 @@ const rolld20 = function() {
   const result = getRandomNumber(20);
 
   // Change the image
-  d20.src = `./images/numbers/${result}.png`
+  d20.src = `./images/numbers/${result}.png`;
+
+  // Add the result to its array
+  twenties.push(result);
+
+  // Get the Mean, Median, and Mode, then set the HTML
+  const mean = getMean(twenties);
+  d20Mean.innerText = mean;
+
+  const median = getMedian(twenties);
+  d20Median.innerText = median;
+
+  const mode = getMode(twenties);
 
   return result;
 }
@@ -157,23 +203,60 @@ const reset = function() {
 
   // Changes mean, median, mode to nothing
   // d6
-  d6Mean.innerText = '&nbsp';
-  d6Median.innerText = '&nbsp';
-  d6Mode.innerText = '&nbsp';
+  d6Mean.innerText = 'N/A';
+  d6Median.innerText = 'N/A';
+  d6Mode.innerText = 'N/A';
   // 2d6
-  dd6Mean.innerText = '&nbsp';
-  dd6Median.innerText = '&nbsp';
-  dd6Mode.innerText = '&nbsp';
+  dd6Mean.innerText = 'N/A';
+  dd6Median.innerText = 'N/A';
+  dd6Mode.innerText = 'N/A';
   // d12
-  d12Mean.innerText = '&nbsp';
-  d12Median.innerText = '&nbsp';
-  d12Mode.innerText = '&nbsp';
+  d12Mean.innerText = 'N/A';
+  d12Median.innerText = 'N/A';
+  d12Mode.innerText = 'N/A';
   // d20
-  d20Mean.innerText = '&nbsp';
-  d20Median.innerText = '&nbsp';
-  d20Mode.innerText = '&nbsp';
+  d20Mean.innerText = 'N/A';
+  d20Median.innerText = 'N/A';
+  d20Mode.innerText = 'N/A';
 }
+
+resetButton.addEventListener('click', reset);
 
 /****************
  * MATH SECTION *
  ****************/
+// Determines Mean
+ const getMean = function(arr) {
+  if(arr.length === 0) {
+    return 0;
+  }
+
+  let total = 0;
+  const numsInArray = arr.length;
+  
+  for(const num of arr) {
+    total += num;
+  }
+
+  const avg = total / numsInArray;
+  return avg.toFixed(2);
+}
+
+const getMedian = function(arr) {
+  if(arr.length === 1) {
+    return arr[0];
+  }
+
+  const sortedArr = sortByNumber(arr);
+  const len = arr.length;
+  
+  const mid = Math.ceil(len / 2);
+  const median = 
+    len % 2 === 0 ? (sortedArr[mid] + sortedArr[mid - 1]) / 2 : sortedArr[mid];
+
+  return median;
+}
+
+const getMode = function(arr) {
+
+}
