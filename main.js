@@ -98,6 +98,7 @@ const rolld6 = function() {
   d6Median.innerText = median;
 
   const mode = getMode(sixes);
+  d6Mode.innerText = mode;
 
   return result;
 }
@@ -123,6 +124,7 @@ const roll2d6 = function() {
   dd6Median.innerText = median;
 
   const mode = getMode(doubleSixes);
+  dd6Mode.innerText = mode;
 
   return result;
 }
@@ -145,6 +147,7 @@ const rolld12 = function() {
   d12Median.innerText = median;
 
   const mode = getMode(twelves);
+  d12Mode.innerText = mode;
 
   return result;
 }
@@ -167,6 +170,7 @@ const rolld20 = function() {
   d20Median.innerText = median;
 
   const mode = getMode(twenties);
+  d20Mode.innerText = mode;
 
   return result;
 }
@@ -258,5 +262,24 @@ const getMedian = function(arr) {
 }
 
 const getMode = function(arr) {
+  if(arr.length === 0) {
+    return arr[0];
+  }
 
+  const numCounts = {};
+
+  for(const num of arr) {
+    numCounts[num] = numCounts[num] + 1 || 1;
+  }
+
+  let modeKey = -1;
+  let modeValue = -1;
+
+  for(const num in numCounts) {
+    if(numCounts[num] > modeValue) {
+      modeKey = num;
+    }
+  }
+
+  return modeKey;
 }
