@@ -2,7 +2,7 @@
  * DATA *
  **********/
 
-const sixes = [];
+const sixes = [1];
 const doubleSixes = [];
 const twelves = [];
 const twenties = [];
@@ -34,19 +34,37 @@ const sortByNumber = function(arr) {
  * YOUR CODE BELOW *
  *******************/
 
-// Our dice pics
+// Our dice pics, and our mean, median, and mode
 // Single d6
-const d6 = document.querySelector('#d6 roll');
+const d6 = document.querySelector('#d6-roll');
+const d6Mean = document.querySelector('#d6-rolls-mean');
+const d6Median = document.querySelector('#d6-rolls-median');
+const d6Mode = document.querySelector('#d6-rolls-mode');
 
 // Double d6
 const d6_1 = document.querySelector('#double-d6-roll-1');
-const d6_2 = document.querySelector('#double-d6-roll-1');
+const d6_2 = document.querySelector('#double-d6-roll-2');
+const dd6Mean = document.querySelector('#double-d6-rolls-mean');
+const dd6Median = document.querySelector('#double-d6-rolls-median');
+const dd6Mode = document.querySelector('#double-d6-rolls-mode');
 
 // Single d12
 const d12 = document.querySelector('#d12-roll');
+const d12Mean = document.querySelector('#d12-rolls-mean');
+const d12Median = document.querySelector('#d12-rolls-median');
+const d12Mode = document.querySelector('#d12-rolls-mode');
 
 // Single d20
-const d20 = document.querySelector('#d20');
+const d20 = document.querySelector('#d20-roll');
+const d20Mean = document.querySelector('#d20-rolls-mean');
+const d20Median = document.querySelector('#d20-rolls-median');
+const d20Mode = document.querySelector('#d20-rolls-mode');
+
+d6.src = './images/start/d6.png';
+d6_1.src = './images/start/d6.png';
+d6_2.src = './images/start/d6.png';
+d12.src = './images/start/d12.jpeg';
+d20.src = './images/start/d20.jpg';
 
 /*******************
  * DICE ROLLERS *
@@ -65,8 +83,6 @@ const roll = function(max, sides, amount) {
 
 }
 
-
-
 /*******************
  * EVENT LISTENERS *
  *******************/
@@ -79,8 +95,22 @@ const roll = function(max, sides, amount) {
 // 2. Changes the dice buttons back to their starting images
 // 3. Changes the text in our mean/median/mode text areas to nothing
 const reset = function() {
-  
+  // Empty the Arrays
+  sixes.splice(0, sixes.length);
+  doubleSixes.splice(0, sixes.length);
+  twelves.splice(0, sixes.length);
+  twenties.splice(0, sixes.length);
+
+  // Reset the images
+  d6.src = './images/start/d6.png';
+  d6_1.src = './images/start/d6.png';
+  d6_2.src = './images/start/d6.png';
+  d12.src = './images/start/d12.jpeg';
+  d20.src = './images/start/d20.jpg';
+
+  // Changes mean, median, mode to nothing
 }
+
 
 /****************
  * MATH SECTION *
